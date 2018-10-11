@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xfsoft.mybatis.mapper.OrderMapper">
+	<resultMap type="Order" id="orders">
+		<result column="user_id" property="userid"/>
+	</resultMap>
+	
+	<select id="selectOrder" resultMap="orders">
+		SELECT id, user_id, number, createtime, note FROM orders 
+	</select>
+	
+</mapper>

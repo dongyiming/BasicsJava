@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：命名空间，用于隔离sql，还有一个很重要的作用，后面会讲 -->
+<mapper namespace="com.xfsoft.mybatis.mapper.UserMapper">
+
+	<!-- 通过id查询 -->
+	<select id="findById" parameterType="Integer"
+		resultType="com.xfsoft.mybatis.pojo.User">
+
+		select * from user where id = #{v}
+	</select>
+
+	<!-- 通过用户名模糊查询 -->
+
+	<select id="findUserByUsername" parameterType="String"
+		resultType="com.xfsoft.mybatis.pojo.User">
+
+		select * from user where username like '%${value}%'
+
+	</select>
+
+	<!-- 添加用户 -->
+	<insert id="insertUser" parameterType="com.xfsoft.mybatis.pojo.User">
+		<selectKey keyProperty="id" resultType="Integer" order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey>
+
+
+		insert into user (username,birthday,address,sex) value
+		(#{username},#{birthday},#{address},#{sex})
+
+	</insert>
+
+	<!-- 更新用户 -->
+	<update id="updateUser" parameterType="com.xfsoft.mybatis.pojo.User">
+		update user
+		set username = #{username},sex = #{sex},birthday =
+		#{birthday},address=#{address}
+		where id = #{id}
+	</update>
+
+	<!-- 删除用户 -->
+	<delete id="deleteUser" parameterType="com.xfsoft.mybatis.pojo.User">
+		delete from user where id
+		= #{v}
+	</delete>
+	<!-- 通过QueryVO进行模糊查询 -->	
+	<select id="findUserByQueryVo" parameterType="com.xfsoft.mybatis.pojo.QueryVo"
+		resultType="com.xfsoft.mybatis.pojo.User">
+		select * from user where username like '%${user.username}%'
+	</select>
+	<!-- 条数 -->
+	<select id ="Count" resultType="Integer">
+		select count(1) from user
+	</select>
+	
+</mapper>
