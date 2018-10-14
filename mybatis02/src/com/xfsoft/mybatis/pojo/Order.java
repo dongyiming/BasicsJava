@@ -5,13 +5,37 @@ import java.util.Date;
 
 public class Order implements Serializable {
 
+	@Override
+	public String toString() {
+		return "Orders [id=" + id + ", userId=" + userid + ", number=" + number + ", createtime=" + createtime
+				+ ", note=" + note + "]";
+	}
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
+
 	private Integer userid;
+
 	private String number;
+
 	private Date createtime;
+
 	private String note;
+
+	// 附加对象 用户对象
+	private User user;
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	public Integer getId() {
 		return id;
@@ -21,12 +45,12 @@ public class Order implements Serializable {
 		this.id = id;
 	}
 
-	public Integer getUserid() {
+	public Integer getUserId() {
 		return userid;
 	}
 
-	public void setUserid(Integer userid) {
-		this.userid = userid;
+	public void setUserId(Integer userId) {
+		this.userid = userId;
 	}
 
 	public String getNumber() {
@@ -34,9 +58,10 @@ public class Order implements Serializable {
 	}
 
 	public void setNumber(String number) {
-		this.number = number;
+		this.number = number == null ? null : number.trim();
 	}
 
+	
 	public Date getCreatetime() {
 		return createtime;
 	}
@@ -50,13 +75,7 @@ public class Order implements Serializable {
 	}
 
 	public void setNote(String note) {
-		this.note = note;
-	}
-
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", userid=" + userid + ", number=" + number + ", createtime=" + createtime
-				+ ", note=" + note + "]";
+		this.note = note == null ? null : note.trim();
 	}
 
 }
