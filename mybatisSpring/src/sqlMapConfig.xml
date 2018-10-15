@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="jdbc.properties"/>
+	<!-- 别名 包以其子包下所有类   头字母大小都行-->
+	<typeAliases>
+<!-- 		<typeAlias type="com.itheima.mybatis.pojo.User" alias="User"/> -->
+		<package name="com.xfsoft.mybatis.pojo"/>
+	</typeAliases>
+
+	<!-- Mapper的位置  Mapper.xml 写Sql语句的文件的位置 -->
+	<mappers>
+<!-- 		<mapper resource="sqlmap/User.xml" class="" url=""/> -->
+<!-- 		<mapper resource="sqlmap/User.xml" class="" url=""/> -->
+<!-- 		<mapper class="com.itheima.mybatis.mapper.UserMapper" /> -->
+<!-- 		<mapper url="" /> -->
+		<package name="com.xfsoft.mybatis.mapper"/>
+	</mappers>
+</configuration>
